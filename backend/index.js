@@ -13,7 +13,7 @@ require('dotenv').config();
 const app = express();
 app.use(logger('dev'));
 app.use('*', cors({
-    origin: 'https://eccom-maaakara-frontend.onrender.com',
+    origin: 'https://eccom-maaakara.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true 
 }));
