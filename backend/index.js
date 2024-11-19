@@ -12,9 +12,11 @@ require('dotenv').config();
 
 const app = express();
 app.use(logger('dev'));
-app.use(cors({ origin: 'http://localhost:5173' },
-    {methods: ['GET', 'POST', 'PUT', 'DELETE']},
-));
+app.use('*', cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true 
+}));
 
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'static')));
@@ -35,14 +37,5 @@ app.get('/', (req, res) => {
     res.send("Welcome to the API!");
 });
 
-const start = async () => {
-    try {
-        app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-    } catch (e) {
-        console.log(e);
-    }
-};
-
-start();
 
 module.exports = app;

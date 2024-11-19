@@ -34,7 +34,6 @@ export const ProductsApi = api.injectEndpoints({
             query: (id) => ({
                 url: `/banner/removeBanner/${id}`,
                 method: "DELETE",
-                // body:{id}
             })
         }),
 

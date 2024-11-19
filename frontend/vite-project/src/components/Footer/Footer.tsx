@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                             <img src={logo} alt="" />
                             <ul className={styles.pageNavs}>
                                 <li><Link to={Path.home} className={styles.nav}>Головна</Link></li>
-                                <li className={styles.nav} onClick={handleClick}>Магазин</li>
+                                <li><Link to={Path.login}  className={styles.nav} onClick={handleClick}>Магазин</Link></li>
                                 <li><Link to={Path.contact} className={styles.nav}>Контакти</Link></li>
                             </ul>
                             <div className={`${styles.ourSocials} ${styles.topSocials}`}> 

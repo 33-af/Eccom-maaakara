@@ -56,13 +56,13 @@ const addBanner = async (req, res) => {
 
 const allBanners = async (req, res) => {
   try {
-    // Fetch all banners, no user filtering
-    const banners = await prisma.banner.findMany();  // No 'where: { userId: req.user.id }' filter
+    
+    const banners = await prisma.banner.findMany(); 
 
     // If needed, add the full URL to the image path
     const bannersWithFullUrls = banners.map(banner => ({
       ...banner,
-      imageUrl: `http://localhost:5001${banner.imageUrl}`  // Make sure the image URL is correct
+      imageUrl: `http://localhost:5001/static/${banner.imageUrl}`  
     }));
 
     res.status(200).json(bannersWithFullUrls);

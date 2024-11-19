@@ -187,10 +187,10 @@ function AdminPanel() {
                         {MeatJerks?.map((meatJerk) => (
                             <div key={meatJerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`http://localhost:5001${meatJerk.image}`} alt={meatJerk.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara.onrender.com${meatJerk.image}`} alt={meatJerk.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{meatJerk.title}</div>
-                                        <div className={styles.product}>MeatJerks</div>
+                                        <div className={styles.product}>Banner</div>
                                         <div className={styles.price}>₹{meatJerk.price}</div>
                                         <div className={styles.price}>{meatJerk.quantity}</div>
                                     </div>
@@ -202,10 +202,10 @@ function AdminPanel() {
                         {Packing?.map((Package) => (
                             <div key={Package.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`http://localhost:5001${Package.image}`} alt={Package.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara.onrender.com${Package.image}`} alt={Package.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{Package.title}</div>
-                                        <div className={styles.product}>Box</div>
+                                        <div className={styles.product}>Banner</div>
                                         <div className={styles.price}>₹{Package.price}</div>
                                         <div className={styles.price}>{Package.quantity}</div>
                                     </div>
@@ -217,10 +217,10 @@ function AdminPanel() {
                         {Pigjerks?.map((pigjerk) => (
                             <div key={pigjerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`http://localhost:5001${pigjerk.image}`} alt={pigjerk.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara.onrender.com${pigjerk.image}`} alt={pigjerk.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{pigjerk.title}</div>
-                                        <div className={styles.product}>Pigjerks</div>
+                                        <div className={styles.product}>Banner</div>
                                         <div className={styles.price}>₹{pigjerk.price}</div>
                                         <div className={styles.price}>{pigjerk.quantity}</div>
                                     </div>
@@ -232,10 +232,10 @@ function AdminPanel() {
                         {Sausages?.map((sausage) => (
                             <div key={sausage.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`http://localhost:5001${sausage.image}`} alt={sausage.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara.onrender.com${sausage.image}`} alt={sausage.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{sausage.title}</div>
-                                        <div className={styles.product}>Sausages</div>
+                                        <div className={styles.product}>Banner</div>
                                         <div className={styles.price}>₹{sausage.price}</div>
                                         <div className={styles.price}>{sausage.quantity}</div>
                                     </div>

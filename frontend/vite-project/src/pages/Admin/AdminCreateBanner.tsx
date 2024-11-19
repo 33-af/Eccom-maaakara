@@ -54,7 +54,7 @@ function AdminPanelProductDetails() {
     };
 
     const toggleSearch = () => {
-        setIsActive(!isActive); // змінюємо стан
+        setIsActive(!isActive); 
     };
 
     const { searchTerm, handleSearchChange, handleSearchSubmit } = useSearch((term) => {
@@ -64,7 +64,7 @@ function AdminPanelProductDetails() {
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            setSelectedImage(file); // сохраняем файл в состояние
+            setSelectedImage(file); 
         }
     };
 
@@ -73,7 +73,7 @@ function AdminPanelProductDetails() {
     };
 
     const handleRemoveImage = () => {
-        setSelectedImage(null); // очищаем выбранное изображение
+        setSelectedImage(null); 
     };
 
     return (
@@ -208,7 +208,7 @@ function AdminPanelProductDetails() {
                                     {selectedImage && (
                                         <div className={styles.imageContainer}>
                                             <img
-                                                src={URL.createObjectURL(selectedImage)} // преобразуем объект File в URL
+                                                src={URL.createObjectURL(selectedImage)} 
                                                 alt="Загруженное изображение"
                                                 className={styles.uploadedImage}
                                             />
