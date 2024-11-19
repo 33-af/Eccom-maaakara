@@ -1,5 +1,4 @@
 import { FC } from "react";
-import React from "react"; 
 import { useNavigate, useParams } from "react-router-dom";
 import {  useGetOneMeatJerkQuery, useRemoveMeatJerkMutation } from "../../services/products";
 import { Path } from "../../Path";

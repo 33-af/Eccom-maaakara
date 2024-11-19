@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import  { FC } from 'react'
 import styles from './style.module.css';
 import { useGetOneBannerQuery, useRemoveBannerMutation } from '../../services/products';
 import { useNavigate, useParams } from 'react-router-dom';

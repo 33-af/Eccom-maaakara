@@ -1,4 +1,3 @@
-import React from 'react';
 import Placing from "../../components/PlacingOrderComponents/Placing";
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
