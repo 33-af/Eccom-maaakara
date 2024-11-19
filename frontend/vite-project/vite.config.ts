@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: './', // Указывает использовать относительные пути
+  base: './', // Относительные пути для статических файлов
   build: {
     outDir: 'dist',
   },
