@@ -62,7 +62,7 @@ const allBanners = async (req, res) => {
     // If needed, add the full URL to the image path
     const bannersWithFullUrls = banners.map(banner => ({
       ...banner,
-      imageUrl: `http://localhost:5001/static/${banner.imageUrl}`  
+      imageUrl: `https://eccom-maaakara-frontend.onrender.com/static/${banner.imageUrl}`  
     }));
 
     res.status(200).json(bannersWithFullUrls);
