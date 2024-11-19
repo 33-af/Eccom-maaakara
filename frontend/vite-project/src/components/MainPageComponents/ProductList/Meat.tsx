@@ -27,7 +27,7 @@ const Meat: React.FC = () => {
                     className={styles.productList__card}
                 >
                     <img
-                        src={`https://eccom-maaakara.onrender.com${meatJerk.image}`}
+                        src={`http://localhost:5001${meatJerk.image}`}
                         alt={meatJerk.title}
                         className={styles.productImage}
                     />
