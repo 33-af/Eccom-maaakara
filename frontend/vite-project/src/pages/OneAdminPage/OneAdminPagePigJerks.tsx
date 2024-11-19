@@ -106,7 +106,7 @@ const OneAdminPagePigJerks: FC = () => {
                         <div className={styles.productInfo}>
                             <div className={styles.leftContent}>
                                 <img
-                                    src={`http://localhost:5001${Pigjerks.image}`}
+                                    src={`https://ecc-mak-backend.onrender.com/${Pigjerks.image}`}
                                     alt={Pigjerks.title}
                                     className={styles.productImg}
                                 />
