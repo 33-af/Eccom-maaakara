@@ -26,7 +26,7 @@ const Sausages: React.FC = () => {
                     className={styles.productList__card}
                 >
                     <img
-                        src={`https://ecc-mak-backend.onrender.com/${sausage.image}`}
+                        src={`https://eccom-maaakara-backend.onrender.com/${sausage.image}`}
                         alt={sausage.title}
                         className={styles.productImage}
                     />

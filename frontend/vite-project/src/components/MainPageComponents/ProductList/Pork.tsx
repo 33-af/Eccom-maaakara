@@ -28,7 +28,7 @@ const Pork: React.FC = () => {
                     className={styles.productList__card}
                 >
                     <img
-                        src={`https://ecc-mak-backend.onrender.com/${pigjerk.image}`}
+                        src={`https://eccom-maaakara-backend.onrender.com/${pigjerk.image}`}
                         alt={pigjerk.title}
                         className={styles.productImage}
                     />

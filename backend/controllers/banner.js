@@ -87,7 +87,7 @@ const getBannerById = async (req, res) => {
 
     const bannerWithFullUrl = {
       ...banner,
-      imageUrl: `http://localhost:5001${banner.imageUrl}`,
+      imageUrl: `https://eccom-maaakara-backend.onrender.com/${banner.imageUrl}`,
     };
 
     res.status(200).json(bannerWithFullUrl);
