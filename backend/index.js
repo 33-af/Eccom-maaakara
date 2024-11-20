@@ -13,9 +13,20 @@ require('dotenv').config();
 const app = express();
 app.use(logger('dev'));
 app.use('*', cors({
-    origin: 'https://eccom-maaakara.onrender.com',
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'https://eccom-maaakara.onrender.com',
+            'http://localhost:5173' 
+        ];
+
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); 
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true 
+    credentials: true
 }));
 
 app.use(express.json());

@@ -9,13 +9,13 @@ const OneAdminPackage: FC = () => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const { data: Packing, error, isLoading } = useGetOnePackQuery(id!);
-    const [removePacking] = useRemovePackingMutation(); 
+    const [removePacking] = useRemovePackingMutation();
 
     const handleRemove = async () => {
         try {
-            await removePacking(id!).unwrap(); 
+            await removePacking(id!).unwrap();
             alert("Packing successfully deleted.");
-            navigate(Path.home); 
+            navigate(Path.home);
         } catch (error) {
             console.error("Error removing Packing:", error);
             alert("Error removing Packing. Please try again.");
@@ -30,10 +30,10 @@ const OneAdminPackage: FC = () => {
                 <p>Error loading product details. Please try again later.</p>
             ) : Packing ? (
                 <>
-                    <img 
-                        src={`https://ecc-mak-backend.onrender.com/{Packing.image}`}
-                        alt={Packing.title} 
-                        className={styles.productImage} 
+                    <img
+                        src={`https://eccom-maaakara-backend.onrender.com/${Packing.image}`}
+                        alt={Packing.title}
+                        className={styles.productImage}
                     />
                     <h2>{Packing.title}</h2>
                     <p>{Packing.description}</p>
