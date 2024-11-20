@@ -29,7 +29,8 @@ const Sidebar: React.FC = () => {
     };
 
     const currentBanner = banners?.[currentIndex];
-    
+    console.log(currentBanner?.imageUrl);
+
 
     return (
         <div className='container'>
@@ -48,18 +49,20 @@ const Sidebar: React.FC = () => {
                             ←
                         </button>
 
+
                         {currentBanner && currentBanner.imageUrl ? (
+
                             <Link to={`/admin-panel-one-banner/${currentBanner.id}`}>
                                 <img
-                                    src={currentBanner.imageUrl}
+                                    src={currentBanner.imageUrl}  // Здесь указываем источник изображения
                                     alt="Banner"
                                     className={styles.bannerImage}
-                                    
                                 />
                             </Link>
                         ) : (
                             <p>No banners available</p>
                         )}
+
                         <button onClick={nextBanner} className={styles.arrowButton}>
                             →
                         </button>
