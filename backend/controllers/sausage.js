@@ -35,7 +35,7 @@ const addSausage = async (req, res) => {
         await image.mv(filePath);
         console.log("File uploaded:", filePath);
 
-        const imageUrl = `/static/${uniqueName}`;
+        const imageUrl = `static/${uniqueName}`;
 
         const sausages = await prisma.sausage.create({
             data: {
