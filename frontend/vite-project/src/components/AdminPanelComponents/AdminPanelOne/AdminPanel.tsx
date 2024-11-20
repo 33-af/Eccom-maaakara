@@ -187,7 +187,7 @@ function AdminPanel() {
                         {MeatJerks?.map((meatJerk) => (
                             <div key={meatJerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://ecc-mak-backend.onrender.com/${meatJerk.image}`} alt={meatJerk.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara-backend.onrender.com${meatJerk.image}`} alt={meatJerk.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{meatJerk.title}</div>
                                         <div className={styles.product}>Banner</div>
@@ -202,7 +202,7 @@ function AdminPanel() {
                         {Packing?.map((Package) => (
                             <div key={Package.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://ecc-mak-backend.onrender.com/${Package.image}`} alt={Package.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara-backend.onrender.com${Package.image}`} alt={Package.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{Package.title}</div>
                                         <div className={styles.product}>Banner</div>
@@ -217,7 +217,7 @@ function AdminPanel() {
                         {Pigjerks?.map((pigjerk) => (
                             <div key={pigjerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://ecc-mak-backend.onrender.com/${pigjerk.image}`} alt={pigjerk.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara-backend.onrender.com${pigjerk.image}`} alt={pigjerk.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{pigjerk.title}</div>
                                         <div className={styles.product}>Banner</div>
@@ -232,7 +232,7 @@ function AdminPanel() {
                         {Sausages?.map((sausage) => (
                             <div key={sausage.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://ecc-mak-backend.onrender.com/${sausage.image}`} alt={sausage.title} className={styles.bannerImage} />
+                                    <img src={`https://eccom-maaakara-backend.onrender.com${sausage.image}`} alt={sausage.title} className={styles.bannerImage} />
                                     <div className={styles.cardInfo}>
                                         <div>{sausage.title}</div>
                                         <div className={styles.product}>Banner</div>

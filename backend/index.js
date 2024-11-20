@@ -41,6 +41,8 @@ app.use('/static', express.static(path.join(__dirname, 'static'), {
         }
     }
 }));
+console.log(path.join(__dirname, 'static'));
+
 
 
 app.use(express.urlencoded({ extended: false }));

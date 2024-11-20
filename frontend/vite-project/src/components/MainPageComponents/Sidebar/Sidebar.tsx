@@ -9,6 +9,7 @@ const Sidebar: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     console.log(currentIndex)
 
+
     if (isLoading) return <p>Loading banners...</p>;
     if (error) return <p>Error loading banners</p>;
 
@@ -28,6 +29,7 @@ const Sidebar: React.FC = () => {
     };
 
     const currentBanner = banners?.[currentIndex];
+    
 
     return (
         <div className='container'>
@@ -52,6 +54,7 @@ const Sidebar: React.FC = () => {
                                     src={currentBanner.imageUrl}
                                     alt="Banner"
                                     className={styles.bannerImage}
+                                    
                                 />
                             </Link>
                         ) : (
