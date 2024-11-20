@@ -34,7 +34,7 @@ const addBanner = async (req, res) => {
     await image.mv(filePath);
     console.log("File uploaded:", filePath);
 
-    const bannerUrl = `https://eccom-maaakara-backend.onrender.com/static/${uniqueName}`;
+    const bannerUrl = `/static/${uniqueName}`;
     console.log("Generated banner URL:", bannerUrl);
 
 
@@ -64,7 +64,7 @@ const allBanners = async (req, res) => {
     // If needed, add the full URL to the image path
     const bannersWithFullUrls = banners.map(banner => ({
       ...banner,
-      imageUrl: `https://eccom-maaakara.onrender.com${banner.imageUrl}`  
+      imageUrl: `https://eccom-maaakara-backend.onrender.com/${banner.imageUrl}`  
     }));
 
     res.status(200).json(bannersWithFullUrls);
