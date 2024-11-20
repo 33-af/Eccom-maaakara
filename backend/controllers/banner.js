@@ -76,12 +76,12 @@ const allBanners = async (req, res) => {
 };
 
 const getBannerById = async (req, res) => {
-  const { id } = req.params;  // Получаем id как строку
+  const { id } = req.params;  
 
   try {
-    // Если `id` в базе данных — это UUID или строка, убираем `parseInt`
+
     const banner = await prisma.banner.findUnique({
-      where: { id },  // Используем id как строку, если это UUID
+      where: { id },  
     });
 
     if (!banner) {
