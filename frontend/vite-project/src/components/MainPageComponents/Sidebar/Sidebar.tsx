@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
                         {currentBanner ? (
                             <Link to={`/admin-panel-one-banner/${currentBanner?.id}`}>
                             <img
-                                src={currentBanner.imageUrl}
+                                src={currentBanner.image}
                                 alt="Banner"
                                 className={styles.bannerImage}
                             />
