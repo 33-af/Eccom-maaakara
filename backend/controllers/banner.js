@@ -34,7 +34,7 @@ const addBanner = async (req, res) => {
     await image.mv(filePath);
     console.log("File uploaded:", filePath);
 
-    const bannerUrl = `/static/${uniqueName}`;
+    const bannerUrl = `https://eccom-maaakara-backend.onrender.com/static/${uniqueName}`;
     console.log("Generated banner URL:", bannerUrl);
 
 

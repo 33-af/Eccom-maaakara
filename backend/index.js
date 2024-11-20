@@ -30,7 +30,14 @@ app.use('*', cors({
 }));
 
 app.use(express.json());
-app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use('/static', express.static(path.join(__dirname, 'static'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.css')) {
+            res.set('Content-Type', 'text/css');
+        }
+    }
+}));
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({}));
