@@ -16,11 +16,11 @@ app.use('*', cors({
     origin: (origin, callback) => {
         const allowedOrigins = [
             'https://eccom-maaakara.onrender.com',
-            'http://localhost:5173' 
+            'http://localhost:5173'
         ];
 
         if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true); 
+            callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
         }
@@ -31,6 +31,11 @@ app.use('*', cors({
 
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'static')));
+
+// Этот маршрут отдаст HTML файл, содержащий стили
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', 'index.html'));
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({}));
