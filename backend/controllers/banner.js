@@ -26,24 +26,26 @@ const addBanner = async (req, res) => {
     }
 
 
-    const fileExtension = path.extname(image.name); 
+    const fileExtension = path.extname(image.name);
     const uniqueName = uuidv4() + fileExtension;
     const filePath = path.join(uploadPath, uniqueName);
 
- 
+
     await image.mv(filePath);
     console.log("File uploaded:", filePath);
 
     const bannerUrl = `/static/${uniqueName}`;
+    console.log("Generated banner URL:", bannerUrl);
+
 
     const banner = await prisma.banner.create({
       data: {
         imageUrl: bannerUrl,
-        userId: req.user.id, 
-        image: uniqueName,    
+        userId: req.user.id,
+        image: uniqueName,
       },
     });
-    
+
 
     res.status(200).json({ message: 'Banner uploaded successfully', banner });
   } catch (error) {
@@ -56,13 +58,13 @@ const addBanner = async (req, res) => {
 
 const allBanners = async (req, res) => {
   try {
-    
-    const banners = await prisma.banner.findMany(); 
+
+    const banners = await prisma.banner.findMany();
 
     // If needed, add the full URL to the image path
     const bannersWithFullUrls = banners.map(banner => ({
       ...banner,
-      imageUrl: `https://eccom-maaakara.onrender.com/static/${banner.imageUrl}`  
+      imageUrl: `https://eccom-maaakara.onrender.com${banner.imageUrl}`  // Убираем лишний /static
     }));
 
     res.status(200).json(bannersWithFullUrls);
