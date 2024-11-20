@@ -31,9 +31,13 @@ app.use('*', cors({
 
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'static'), {
-    setHeaders: (res, path) => {
-        if (path.endsWith('.css')) {
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.css')) {
             res.set('Content-Type', 'text/css');
+        } else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
+            res.set('Content-Type', 'image/jpeg');
+        } else if (filePath.endsWith('.png')) {
+            res.set('Content-Type', 'image/png');
         }
     }
 }));
