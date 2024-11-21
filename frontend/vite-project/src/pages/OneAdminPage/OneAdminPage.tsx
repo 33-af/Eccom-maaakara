@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Path } from '../../Path';
 
 
+
 const OneAdminPage: FC = () => {
     const navigate = useNavigate()
     const { id } = useParams<{ id: string }>(); 

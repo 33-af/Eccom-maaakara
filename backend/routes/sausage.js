@@ -5,7 +5,7 @@ const  SausageControler = require('../controllers/sausage')
 
 router.get('/',   SausageControler.allSausages)
 router.post('/addSausage', auth, SausageControler.addSausage )
-router.get('/getOneSausage/:id', auth, SausageControler.oneSausage)
+router.get('/getOneSausage/:id',  SausageControler.oneSausage)
 
 router.delete('/removeSausage/:id', auth, SausageControler.removeSausage)
 router.put('/updateSausage/:id', auth, SausageControler.updateSausage)

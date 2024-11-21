@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Path } from "../Path";
-import Main from "../pages/Main/Main";
+// import Main from "../pages/Main/Main";
 import Cart from "../pages/Cart/Cart";
 import ContactsPage from "../pages/Contacts/ContactsPage";
 import OrderStatus from "../pages/OrderStatus/OrderStatus";
 import PlacingOrder from "../pages/PlacingOrder/PlacingOrder";
-import Admin from "../pages/Admin/Admin";
+// import Admin from "../pages/Admin/Admin";
 import Login from "../pages/login/Login";
 import AdminCreateBanner from "../pages/Admin/AdminCreateBanner";
 import AdminCreateMeatJerks from "../pages/Admin/AdminCreateMeatJerks";
@@ -17,20 +17,22 @@ import OneAdminPageMeatjerks from "../pages/OneAdminPage/OneAdminPageMeatjerks";
 import OneAdminPackage from "../pages/OneAdminPage/OneAdminPagePacking";
 import OneAdminPagePigJerks from "../pages/OneAdminPage/OneAdminPagePigJerks";
 import OneAdminSausage from "../pages/OneAdminPage/OneAdminSausage";
+import { lazy } from "react";
 
-
+const LazyAdmin  = lazy(()=> import('../pages/Admin/Admin')) 
+const LazyMain  = lazy(()=> import('../pages/Main/Main')) 
 
 
 
 const router = createBrowserRouter([
     {
         path: Path.adminPanel,
-        element: <Admin/>,
+        element: <LazyAdmin/>,
     },
 
     {
         path: Path.home,
-        element: <Main/>,
+        element: <LazyMain/>,
     },
     {
         path: Path.login,

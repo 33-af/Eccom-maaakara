@@ -1,8 +1,29 @@
+.container-bottom {
+  display: flex;
+}
+
+.border-left {
+  display: block;
+  background-color: white;
+  width: 200px; 
+  height: 10px; 
+}
+
+.border-right {
+  display: block;
+  background-color: black;
+  width: 200px; 
+  height: 10px;
+}
+
+
 .siteWrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
+
 
 .siteContent {
     flex: 1;

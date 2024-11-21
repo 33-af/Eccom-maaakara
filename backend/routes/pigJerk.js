@@ -6,7 +6,7 @@ const pigJerkController = require('../controllers/pigJerk')
 
 router.get('/',  pigJerkController.allPigJerks)
 router.post('/addPigJerks', auth, pigJerkController.addPigJerks)
-router.get('/getOnePigJerk/:id', auth, pigJerkController.onePigJerk)
+router.get('/getOnePigJerk/:id',  pigJerkController.onePigJerk)
 router.delete('/removePigJerk/:id', auth, pigJerkController.removePigJerk)
 router.put('/updatePigJerk/:id', auth, pigJerkController.updatePigJerk)
 

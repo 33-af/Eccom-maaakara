@@ -7,7 +7,7 @@ const {auth} = require('../middleware/authMiddleware');
 
 router.get('/',  meatJerksController.allMeatJerks)
 router.post('/addMeatJerks', auth, meatJerksController.addMeatJerks);
-router.get('/getOneMeatJerk/:id',  auth, meatJerksController.oneMeatJerks);  // Добавлен слэш перед "getOneMeatJerk"
+router.get('/getOneMeatJerk/:id',   meatJerksController.oneMeatJerks);  // Добавлен слэш перед "getOneMeatJerk"
 router.delete('/removeMeatJerk/:id', auth,  meatJerksController.removeMeatJerk)
 router.put('/updateMeatJerk/:id', auth,meatJerksController. updateMeatJerk)
 
