@@ -7,9 +7,9 @@ import { Path } from '../../../Path';
 
 
 const Sets: React.FC = () => {
-    const { data: Packing, error, isLoading } = useGetAllPackingQuery();
+    const { data: Packing, error } = useGetAllPackingQuery();
 
-    if (isLoading) return <p>Loading banners...</p>;
+    
     if (error) return <p>Error loading banners</p>;
     return (
         <div className={styles.productsWrapper}>

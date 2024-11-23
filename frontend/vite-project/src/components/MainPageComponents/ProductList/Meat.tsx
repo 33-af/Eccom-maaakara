@@ -6,10 +6,10 @@ import { useGetAllMeatJerkQuery } from '../../../services/products';
 
 
 const Meat: React.FC = () => {
-    const { data: MeatJerks, error, isLoading } = useGetAllMeatJerkQuery();
+    const { data: MeatJerks, error } = useGetAllMeatJerkQuery();
 
 
-    if (isLoading) return <p>Loading banners...</p>;
+   
     if (error) return <p>Error loading banners</p>;
 
 

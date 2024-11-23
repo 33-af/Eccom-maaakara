@@ -7,9 +7,8 @@ import { Path } from '../../../Path';
 
 const Pork: React.FC = () => {
 
-    const { data: Pigjerks, error, isLoading } = useGetAllPigJerksQuery();
+    const { data: Pigjerks, error } = useGetAllPigJerksQuery();
 
-    if (isLoading) return <p>Loading banners...</p>;
     if (error) return <p>Error loading banners</p>;
 
 

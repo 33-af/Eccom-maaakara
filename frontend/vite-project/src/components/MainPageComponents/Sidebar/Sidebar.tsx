@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import styles from './style.module.css';
 import { useGetBannersQuery } from '../../../services/products';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from '../../../redux/slices/adminSlice';
 
 const Sidebar: React.FC = () => {
-    const { data: banners, error, isLoading } = useGetBannersQuery();
-    console.log(banners)
+    const { data: banners, error } = useGetBannersQuery();
     const [currentIndex, setCurrentIndex] = useState(0);
-    console.log(currentIndex)
+    const isAuthenticated = useSelector(selectIsAuthenticated)
 
 
-    if (isLoading) return <p>Loading banners...</p>;
     if (error) return <p>Error loading banners</p>;
 
 
@@ -50,17 +50,20 @@ const Sidebar: React.FC = () => {
                         </button>
 
 
-                        {currentBanner && currentBanner.imageUrl ? (
-
+                        {currentBanner && currentBanner.imageUrl && isAuthenticated ? (
                             <Link to={`/admin-panel-one-banner/${currentBanner.id}`}>
                                 <img
-                                    src={currentBanner.imageUrl}  // Здесь указываем источник изображения
+                                    src={currentBanner.imageUrl}
                                     alt="Banner"
                                     className={styles.bannerImage}
                                 />
                             </Link>
                         ) : (
-                            <p>No banners available</p>
+                            <img
+                                src={currentBanner?.imageUrl}
+                                alt="Banner"
+                                className={styles.bannerImage}
+                            />
                         )}
 
                         <button onClick={nextBanner} className={styles.arrowButton}>

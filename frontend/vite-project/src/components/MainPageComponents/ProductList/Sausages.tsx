@@ -7,9 +7,8 @@ import { Path } from '../../../Path';
 
 
 const Sausages: React.FC = () => {
-    const { data: Sausages , error, isLoading } = useGetAllSausagesQuery();
-
-    if (isLoading) return <p>Loading banners...</p>;
+    const { data: Sausages , error } = useGetAllSausagesQuery();
+    
     if (error) return <p>Error loading banners</p>;
 
     return (
