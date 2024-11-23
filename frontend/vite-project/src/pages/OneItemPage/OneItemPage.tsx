@@ -6,11 +6,11 @@ import  './index.css'
 
 const OneItemPage: React.FC = () => {
     return (
-        <div className="page-container">
+        <div>
             <Header />
-            <div className="content">
+          
                 <OneItem />
-            </div>
+   
             <Footer />
         </div>
     );

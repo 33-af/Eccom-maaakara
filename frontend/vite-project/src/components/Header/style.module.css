@@ -88,6 +88,9 @@
     .basket:hover {
         color: inherit !important;
     }
+    .headerContent{
+        background: #EBE4D0;
+    }
 }
 
 @media (max-width: 650px) {
