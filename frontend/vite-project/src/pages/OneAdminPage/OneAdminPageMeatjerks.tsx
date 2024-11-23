@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetOneMeatJerkQuery, useRemoveMeatJerkMutation } from "../../services/products";
 import styles from './style.module.css';
 import Header from "../../components/Header/Header";
 import { Path } from "../../Path";
+import Footer from "../../components/Footer/Footer";
 
 
 
@@ -73,6 +74,7 @@ const OneAdminPageMeatjerks: FC = () => {
                             <div className={styles.containerProductItem}>
                                 <div className={styles.productOneTop}>
                                     <button className={styles.backBtn} onClick={() => navigate(Path.home)}>Назад</button>
+                                    
                                 </div>
                                 <h1 className={styles.oneItemLeft}>{meatJerk.title}</h1>
                                 <div className={styles.productInfo}>
@@ -115,13 +117,14 @@ const OneAdminPageMeatjerks: FC = () => {
                                     </div>
                                 </div>
                                 <div className={styles.description}>
-                                        <p>{meatJerk.description}</p>
-                                        <p>Category: {meatJerk.category}</p>
-                                        <p>Stock Quantity: {meatJerk.quantity}</p>
-                                        <button type="button" onClick={handleRemove} className={styles.removeButton}>
-                                            Delete Product
-                                        </button>
-                                    </div>
+                                    <p>{meatJerk.description}</p>
+
+                                    <p className={styles.productInformation}><strong>Category:</strong> Meat Jerk</p>
+                                    <p><strong>Stock Quantity:</strong> {meatJerk.quantity} Gram</p>
+                                    <button type="button" onClick={handleRemove} className={styles.removeButton}>
+                                        Delete Product
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </>
@@ -129,6 +132,7 @@ const OneAdminPageMeatjerks: FC = () => {
                     <p>No product found</p>
                 )}
             </div>
+            <Footer />
         </>
     );
 };

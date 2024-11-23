@@ -1,6 +1,8 @@
 .footer {
     background-color: #70625B;
     padding: 100px 0 60px 0;
+    margin-top: auto; 
+    height: auto; 
 }
 
 .pageNavs,
@@ -112,7 +114,14 @@ ul {
     display: none;
 }
 
-/*media*/
+@media (min-width: 775px) {
+    footer {
+        min-height: 250px; /* Увеличенная высота для больших экранов */
+        padding: 150px 0 90px;
+    }
+}
+
+/* 
 
 @media (max-width: 1300px) {
     .footer {
@@ -236,4 +245,4 @@ ul {
         width: 17px;
         height: 17px;
     }
-}
+} */

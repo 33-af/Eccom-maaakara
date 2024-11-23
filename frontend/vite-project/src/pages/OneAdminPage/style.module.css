@@ -4,7 +4,6 @@
 }
 .ProductOneItemSection{
     width: 100%;
-    padding: 0px;
 }
 
 .oneItemSection{
@@ -34,8 +33,18 @@
     cursor: pointer;
 }
 
-.backBtn:hover {
-    background-color: #dfdcd6;
+.backBtn:hover{
+    background-color: white;
+    color:#070707;
+    transition: .4s ease-in;
+}
+
+
+
+.productOneTop{
+   
+    display: flex;
+    justify-content: space-between;
 }
 
 .oneItemLeft{
@@ -140,6 +149,28 @@
     border-radius: 12px;
     padding: 60px 75px;
     font-size: 20px;
+    margin-bottom: 90px;
+  
+}
+
+.productInformation{
+    margin-top: 10px;
+}
+.removeButton{
+    background-color: #7c6f67;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.removeButton:hover{
+    background-color: white;
+    color:#070707;
+    transition: .4s ease-in;
 }
 
 .descTitle {

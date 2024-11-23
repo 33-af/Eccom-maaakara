@@ -1,0 +1,9 @@
+.content{
+    flex: 1; 
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column; /* Вертикальная ориентация */
+    min-height: 100vh; /* Контейнер занимает всю высоту экрана */
+}
