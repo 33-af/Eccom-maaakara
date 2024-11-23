@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Path } from "../Path";
 // import Main from "../pages/Main/Main";
-import Cart from "../pages/Cart/Cart";
+// import Cart from "../pages/Cart/Cart";
 import ContactsPage from "../pages/Contacts/ContactsPage";
 import OrderStatus from "../pages/OrderStatus/OrderStatus";
 import PlacingOrder from "../pages/PlacingOrder/PlacingOrder";
@@ -20,7 +20,8 @@ import OneAdminSausage from "../pages/OneAdminPage/OneAdminSausage";
 import { lazy } from "react";
 
 const LazyAdmin  = lazy(()=> import('../pages/Admin/Admin')) 
-const LazyMain  = lazy(()=> import('../pages/Main/Main')) 
+const LazyMain  = lazy(()=> import('../pages/Main/Main'))
+const LazyCart  = lazy(()=> import("../pages/Cart/Cart")) 
 
 
 
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
     },
     {
         path: Path.cart,
-        element: <Cart/>,
+        element: <LazyCart/>,
     },
     {
         path: Path.contact,

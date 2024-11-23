@@ -5,16 +5,20 @@ import styles from './style.module.css';
 import Header from "../../components/Header/Header";
 import { Path } from "../../Path";
 import Footer from "../../components/Footer/Footer";
+import { loader } from "../../utils/images";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "../../redux/slices/adminSlice";
 
 
 
 const OneAdminPageMeatjerks: FC = () => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const { data: meatJerk, error, isLoading } = useGetOneMeatJerkQuery(id!);
+    const { data: meatJerk, error, isLoading } = useGetOneMeatJerkQuery(id!); // Добавьте isLoading
     const [value, setValue] = useState<string>('1');
     const [selectedSize, setSelectedSize] = useState<number | null>(null);
     const [removeMeatJerk] = useRemoveMeatJerkMutation();
+    const isAuthenticated = useSelector(selectIsAuthenticated);
 
     const handleRemove = async () => {
         try {
@@ -60,13 +64,40 @@ const OneAdminPageMeatjerks: FC = () => {
         }
     };
 
+    if (isLoading) {
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'rgba(216, 216, 216, 0.7)',
+                    fontSize: '1.5rem',
+                    fontFamily: 'Arial, sans-serif',
+                    textAlign: 'center',
+                    flexDirection: 'column',
+                    position: 'relative',
+                    height: '100vh'
+                }}
+            >
+                <img
+                    src={loader}
+                    alt="Loading..."
+                    style={{
+                        width: '75px',
+                        height: '70px',
+                        animation: 'spin 1s linear infinite',
+                    }}
+                />
+            </div>
+        );
+    }
+
     return (
         <>
             <Header />
             <div className={styles.ProductOneItemSection}>
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : error ? (
+                {error ? (
                     <p>Error loading product details. Please try again later.</p>
                 ) : meatJerk ? (
                     <>
@@ -74,7 +105,6 @@ const OneAdminPageMeatjerks: FC = () => {
                             <div className={styles.containerProductItem}>
                                 <div className={styles.productOneTop}>
                                     <button className={styles.backBtn} onClick={() => navigate(Path.home)}>Назад</button>
-                                    
                                 </div>
                                 <h1 className={styles.oneItemLeft}>{meatJerk.title}</h1>
                                 <div className={styles.productInfo}>
@@ -118,12 +148,13 @@ const OneAdminPageMeatjerks: FC = () => {
                                 </div>
                                 <div className={styles.description}>
                                     <p>{meatJerk.description}</p>
-
                                     <p className={styles.productInformation}><strong>Category:</strong> Meat Jerk</p>
                                     <p><strong>Stock Quantity:</strong> {meatJerk.quantity} Gram</p>
-                                    <button type="button" onClick={handleRemove} className={styles.removeButton}>
-                                        Delete Product
-                                    </button>
+                                    {isAuthenticated && (
+                                        <button type="button" onClick={handleRemove} className={styles.removeButton}>
+                                            Delete Product
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -136,6 +167,5 @@ const OneAdminPageMeatjerks: FC = () => {
         </>
     );
 };
-
 
 export default OneAdminPageMeatjerks;
