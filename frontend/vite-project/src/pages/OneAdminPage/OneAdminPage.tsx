@@ -1,15 +1,17 @@
-import  { FC } from 'react'
+
 import styles from './style.module.css';
 import { useGetOneBannerQuery, useRemoveBannerMutation } from '../../services/products';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Path } from '../../Path';
+import { FC } from 'react';
 
 
 
 const OneAdminPage: FC = () => {
     const navigate = useNavigate()
     const { id } = useParams<{ id: string }>(); 
-    const { data: banner, error, isLoading } = useGetOneBannerQuery(id!);
+
+    const { data: banner, error } = useGetOneBannerQuery(id!);
     const [removeBanner] = useRemoveBannerMutation(); 
 
     const handleRemove = async () => {
@@ -23,17 +25,16 @@ const OneAdminPage: FC = () => {
         }
     };
 
+
+
     return (
         <div className={styles.oneItemSection}>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : error ? (
+          { error ? (
                 <p>Error loading banner</p>
             ) : banner ? (
                 <>
                     <img 
-                        src={banner.imageUrl}
-                        alt='banner'
+                        src={banner?.imageUrl}
                         className={styles.bannerImage}
                     />
                     <button type='button' onClick={handleRemove}>

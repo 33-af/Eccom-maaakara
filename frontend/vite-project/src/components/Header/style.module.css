@@ -2,6 +2,7 @@
 
 .headerContent {
     padding: 10px 0;
+    background: #70625B99;
 }
 
 .headerTitle {
@@ -33,7 +34,6 @@
     display: none;
     border: 1px solid gray;
     border-radius: 15px;
-    margin-left: 15px;
     padding: 10px;
     font-size: 15px;
 }

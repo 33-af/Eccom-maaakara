@@ -6,10 +6,12 @@ import { useGetAllMeatJerkQuery } from '../../../services/products';
 
 
 const Meat: React.FC = () => {
+
+
     const { data: MeatJerks, error } = useGetAllMeatJerkQuery();
 
 
-   
+
     if (error) return <p>Error loading banners</p>;
 
 
@@ -22,22 +24,22 @@ const Meat: React.FC = () => {
             <section className={styles.productList__cards}>
                 {MeatJerks?.map((meatJerk) => (
                     <Link
-                    to={`${Path.adminPanelOneMeatJerks}/${meatJerk.id}`} 
-                    key={meatJerk.id}
-                    className={styles.productList__card}
-                >
-                    <img
-                        src={`https://eccom-maaakara-backend.onrender.com/${meatJerk.image}`}
-                                   
-                        alt={meatJerk.title}
-                        className={styles.productImage}
-                    />
-                    <div className={styles.productName}>{meatJerk.title}</div>
-                    <div className={styles.productPrice}>{meatJerk.price}₴</div>
-                    <div className={styles.productDescription}>
-                        {meatJerk.description}
-                    </div>
-                </Link>
+                        to={`${Path.adminPanelOneMeatJerks}/${meatJerk.id}`}
+                        key={meatJerk.id}
+                        className={styles.productList__card}
+                    >
+                        <img
+                            src={`https://eccom-maaakara-backend.onrender.com/${meatJerk.image}`}
+
+                            alt={meatJerk.title}
+                            className={styles.productImage}
+                        />
+                        <div className={styles.productName}>{meatJerk.title}</div>
+                        <div className={styles.productPrice}>{meatJerk.price}₴</div>
+                        <div className={styles.productDescription}>
+                            {meatJerk.description}
+                        </div>
+                    </Link>
                 ))}
             </section>
         </div>

@@ -61,7 +61,6 @@ const Sidebar: React.FC = () => {
                         ) : (
                             <img
                                 src={currentBanner?.imageUrl}
-                                alt="Banner"
                                 className={styles.bannerImage}
                             />
                         )}
