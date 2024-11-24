@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { ChangeEvent } from 'react';
 import dashboard from '../../../images/dashboaard.png';
 import albums from '../../../images/albums.png';
@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Path } from '../../../Path';
 import { logout } from '../../../redux/slices/adminSlice';
 import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery, useGetBannersQuery } from '../../../services/products';
+import { loader } from '../../../utils/images';
 
 type ButtonType = 'dashboard' | 'allProducts';
 
@@ -25,7 +26,34 @@ function AdminPanel() {
     const { data: Pigjerks } = useGetAllPigJerksQuery();
     const { data: Sausages } = useGetAllSausagesQuery();
 
-    if (isLoading) return <p>Loading banners...</p>;
+    if (isLoading) {
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'rgba(216, 216, 216, 0.7)',
+                    fontSize: '1.5rem',
+                    fontFamily: 'Arial, sans-serif',
+                    textAlign: 'center',
+                    flexDirection: 'column',
+                    position: 'relative',
+                    height: '100vh'
+                }}
+            >
+                <img
+                    src={loader}
+                    alt="Loading..."
+                    style={{
+                        width: '75px',
+                        height: '70px',
+                        animation: 'spin 1s linear infinite',
+                    }}
+                />
+            </div>
+        );
+    }
     if (error) return <p>Error loading banners</p>;
 
     const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -49,11 +77,11 @@ function AdminPanel() {
     };
 
     const toggleSearch = () => {
-        setIsActive(!isActive); 
+        setIsActive(!isActive);
     };
 
 
- 
+
 
 
     return (
@@ -178,22 +206,29 @@ function AdminPanel() {
                     <div className={styles.cards}>
                         {banners?.map((banner) => (
                             <div key={banner.id} className={styles.card}>
-                                <div className={styles.flex}>
-                                    <img src={banner.imageUrl} alt="Banner" className={styles.bannerImage} />
-                                </div>
+                                <Link to={`/admin-panel-one-banner/${banner.id}`}>
+                                    <div className={styles.flex}>
+                                        <img src={banner.imageUrl} alt="Banner" className={styles.bannerImage} />
+                                    </div>
+                                </Link>
                             </div>
                         ))}
 
                         {MeatJerks?.map((meatJerk) => (
                             <div key={meatJerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://eccom-maaakara-backend.onrender.com${meatJerk.image}`} alt={meatJerk.title} className={styles.bannerImage} />
-                                    <div className={styles.cardInfo}>
-                                        <div>{meatJerk.title}</div>
-                                        <div className={styles.product}>Banner</div>
-                                        <div className={styles.price}>₹{meatJerk.price}</div>
-                                        <div className={styles.price}>{meatJerk.quantity}</div>
-                                    </div>
+                                    <Link
+                                        to={`${Path.adminPanelOneMeatJerks}/${meatJerk.id}`}
+                                        key={meatJerk.id}
+                                        className={styles.meatJerkLink}
+                                    >
+                                        <img src={`https://eccom-maaakara-backend.onrender.com/${meatJerk.image}`} alt={meatJerk.title} className={styles.meatJerk} />
+                                        <div className={styles.cardInfo}>
+                                            <div className={styles.meatJerkTitle}>{meatJerk.title}</div>
+                                            <div className={styles.product}>{meatJerk.quantity} Gram</div>
+                                            <div className={styles.price}>₹{meatJerk.price}</div>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -202,13 +237,18 @@ function AdminPanel() {
                         {Packing?.map((Package) => (
                             <div key={Package.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://eccom-maaakara-backend.onrender.com${Package.image}`} alt={Package.title} className={styles.bannerImage} />
-                                    <div className={styles.cardInfo}>
-                                        <div>{Package.title}</div>
-                                        <div className={styles.product}>Banner</div>
-                                        <div className={styles.price}>₹{Package.price}</div>
-                                        <div className={styles.price}>{Package.quantity}</div>
-                                    </div>
+                                    <Link
+                                        to={`${Path.adminPanelOnePacking}/${Package.id}`}
+                                        key={Package.id}
+                                        className={styles.meatJerkLink}
+                                    >
+                                        <img src={`https://eccom-maaakara-backend.onrender.com/${Package.image}`} alt={Package.title} className={styles.Package} />
+                                        <div className={styles.cardInfo}>
+                                            <div className={styles.packageTitle}> {Package.title}</div>
+                                            <div className={styles.product}>{Package.quantity}</div>
+                                            <div className={styles.price}>₹{Package.price}</div>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -217,13 +257,18 @@ function AdminPanel() {
                         {Pigjerks?.map((pigjerk) => (
                             <div key={pigjerk.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://eccom-maaakara-backend.onrender.com${pigjerk.image}`} alt={pigjerk.title} className={styles.bannerImage} />
-                                    <div className={styles.cardInfo}>
-                                        <div>{pigjerk.title}</div>
-                                        <div className={styles.product}>Banner</div>
-                                        <div className={styles.price}>₹{pigjerk.price}</div>
-                                        <div className={styles.price}>{pigjerk.quantity}</div>
-                                    </div>
+                                    <Link
+                                        to={`${Path.adminPanelOnePigJerk}/${pigjerk.id}`}
+                                        key={pigjerk.id}
+                                        className={styles.meatJerkLink}
+                                    >
+                                        <img src={`https://eccom-maaakara-backend.onrender.com/${pigjerk.image}`} alt={pigjerk.title} className={styles.pigJerk} />
+                                        <div className={styles.cardInfo}>
+                                            <div>{pigjerk.title}</div>
+                                            <div className={styles.price}>{pigjerk.quantity} Gram</div>
+                                            <div className={styles.price}>₹{pigjerk.price}</div>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -232,13 +277,17 @@ function AdminPanel() {
                         {Sausages?.map((sausage) => (
                             <div key={sausage.id} className={styles.card}>
                                 <div className={styles.flex}>
-                                    <img src={`https://eccom-maaakara-backend.onrender.com${sausage.image}`} alt={sausage.title} className={styles.bannerImage} />
-                                    <div className={styles.cardInfo}>
-                                        <div>{sausage.title}</div>
-                                        <div className={styles.product}>Banner</div>
-                                        <div className={styles.price}>₹{sausage.price}</div>
-                                        <div className={styles.price}>{sausage.quantity}</div>
-                                    </div>
+                                    <Link
+                                        to={`${Path.adminPanelOneSausage}/${sausage.id}`}
+                                        key={sausage.id}
+                                        className={styles.meatJerkLink}>
+                                        <img src={`https://eccom-maaakara-backend.onrender.com/${sausage.image}`} alt={sausage.title} className={styles.sausage} />
+                                        <div className={styles.cardInfo}>
+                                            <div>{sausage.title}</div>
+                                            <div className={styles.price}>{sausage.quantity}</div>
+                                            <div className={styles.price}>₹{sausage.price}</div>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -255,7 +304,7 @@ function AdminPanel() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

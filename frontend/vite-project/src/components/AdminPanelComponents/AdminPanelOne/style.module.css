@@ -153,10 +153,7 @@
     align-items: center;
 }
 
-.title {
-    font-size: 24px;
-    color: #F6FAF9;
-}
+
 
 .page {
     font-size: 16px;
@@ -218,28 +215,32 @@ select > option {
 }
 
 .cards .flex {
-    display: flex;
     align-items: flex-start;
     width: 100%;
 }
 
+
 .card {
     background-color: #0D111C;
-    padding: 24px;
+    padding: 45px;
     border-radius: 16px;
     position: relative;
     width: calc(33% - 20px / 3);
+    height: 250px;
 }
 
-.card img {
-    margin-right: 16px;
+.card:hover{
+    background-color: #2a2f3d;
+    transition: .4s ease-in-out;
+    border: 2px solid white;
+    cursor: pointer;
 }
+
+
 
 .product {
-    font-size: 14px;
-    color: gray;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    color: white;
 }
 
 .dots {
@@ -289,6 +290,41 @@ select > option {
 
 
 .bannerImage{
-    width: 100px;
-    height: 50px;
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    cursor: pointer;
+   
+}
+
+.meatJerk, .Package, .pigJerk, .sausage{
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.Package{
+    height: 120px;
+}
+
+.pigJerk, .sausage{
+    height: 140px;
+}
+
+.meatJerkLink{
+    text-decoration: none;
+    color: white;
+}
+
+.cardInfo{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meatJerkTitle, .packageTitle{
+    font-size: 16px;
+    color: #F6FAF9;
 }

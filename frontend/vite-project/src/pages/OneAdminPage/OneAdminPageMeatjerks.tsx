@@ -24,7 +24,7 @@ const OneAdminPageMeatjerks: FC = () => {
         try {
             await removeMeatJerk(id!).unwrap();
             alert("MeatJerk successfully deleted.");
-            navigate('/home'); // Example path, adjust as needed
+            navigate(Path.home); 
         } catch (error) {
             console.error("Error removing MeatJerk:", error);
             alert("Error removing MeatJerk. Please try again.");

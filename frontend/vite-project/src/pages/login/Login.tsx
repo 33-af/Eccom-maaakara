@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useLoginMutation } from '../../services/auth';
 import { useNavigate } from 'react-router-dom';
 import { Path } from '../../Path';
@@ -12,6 +12,13 @@ const Login: FC = () => {
         password: '12345678',
         name: 'BOSS',
     });
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate(Path.adminPanel, { replace: true })
+        }
+    }, [navigate])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -29,8 +36,8 @@ const Login: FC = () => {
                 password: credentials.password,
                 name: credentials.name
             }).unwrap();
-            navigate(Path.adminPanel)
-            console.log('Response:', response); 
+            navigate(Path.adminPanel, { replace: true })
+            console.log('Response:', response);
             localStorage.setItem('token', response.token);
             localStorage.setItem('user', JSON.stringify({ id: response.id, name: response.name, email: response.email }));
         } catch (error) {

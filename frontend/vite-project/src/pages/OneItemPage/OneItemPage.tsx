@@ -8,9 +8,7 @@ const OneItemPage: React.FC = () => {
     return (
         <div>
             <Header />
-          
                 <OneItem />
-   
             <Footer />
         </div>
     );

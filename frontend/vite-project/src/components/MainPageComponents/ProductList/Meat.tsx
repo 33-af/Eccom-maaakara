@@ -30,7 +30,7 @@ const Meat: React.FC = () => {
                     >
                         <img
                             src={`https://eccom-maaakara-backend.onrender.com/${meatJerk.image}`}
-
+                            key={meatJerk.id}
                             alt={meatJerk.title}
                             className={styles.productImage}
                         />
