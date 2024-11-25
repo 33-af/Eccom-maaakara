@@ -11,16 +11,18 @@ const PORT = process.env.PORT || 5001;
 require('dotenv').config();
 
 const app = express();
+
 app.use(logger('dev'));
+
 app.use('*', cors({
     origin: (origin, callback) => {
         const allowedOrigins = [
             'https://eccom-maaakara.onrender.com',
-            'http://localhost:5173' 
+            'http://localhost:5173'
         ];
 
         if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true); 
+            callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
         }
@@ -30,6 +32,8 @@ app.use('*', cors({
 }));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use('/static', express.static(path.join(__dirname, 'static'), {
     setHeaders: (res, filePath) => {
         if (filePath.endsWith('.css')) {
@@ -41,11 +45,24 @@ app.use('/static', express.static(path.join(__dirname, 'static'), {
         }
     }
 }));
+
+app.use(express.static('dist', {
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.css')) {
+            res.set('Content-Type', 'text/css');
+        } else if (filePath.endsWith('.js')) {
+            res.set('Content-Type', 'application/javascript');
+        } else if (filePath.endsWith('.html')) {
+            res.set('Content-Type', 'text/html');
+        }
+    }
+}));
+
 console.log(path.join(__dirname, 'static'));
 
 
 
-app.use(express.urlencoded({ extended: false }));
+
 app.use(fileUpload({}));
 app.use(cookieParser());
 

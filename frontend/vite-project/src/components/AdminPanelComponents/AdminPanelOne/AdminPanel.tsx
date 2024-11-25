@@ -180,7 +180,7 @@ function AdminPanel() {
                             </div>
 
                             <div className='flex'>
-                                <Link to={Path.home} className={styles.page}>
+                                <Link to={Path.home} replace className={styles.page}>
                                     Home
                                 </Link>
                                 <span className={styles.minus}>-</span>
