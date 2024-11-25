@@ -40,8 +40,10 @@ app.use('/static', express.static(path.join(__dirname, 'static'), {
             res.set('Content-Type', 'text/css');
         } else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
             res.set('Content-Type', 'image/jpeg');
+            res.set('Access-Control-Allow-Origin', '*'); 
         } else if (filePath.endsWith('.png')) {
             res.set('Content-Type', 'image/png');
+            res.set('Access-Control-Allow-Origin', '*'); 
         }
     }
 }));
