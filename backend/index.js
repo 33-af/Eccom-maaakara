@@ -38,19 +38,31 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/static', express.static(path.join(__dirname, 'static'), {
     setHeaders: (res, filePath) => {
+        // CSS files
         if (filePath.endsWith('.css')) {
-            res.set('Cache-Control', 'public, max-age=3600');  // 1 hour caching
+            res.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
             res.set('Content-Type', 'text/css');
+            res.set('Access-Control-Allow-Origin', '*');  // Allow cross-origin requests
         }
 
-        // Image files (JPEG, PNG, and others like WebP or GIF if needed)
+        // Image files (JPEG, PNG, WebP, GIF)
         else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
             res.set('Content-Type', 'image/jpeg');
-            res.set('Access-Control-Allow-Origin', '*');  // Allow cross-origin requests
+            res.set('Access-Control-Allow-Origin', '*');
             res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-            res.set('Cache-Control', 'public, max-age=31536000');  // 1 year caching for images
+            res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
         } else if (filePath.endsWith('.png')) {
             res.set('Content-Type', 'image/png');
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            res.set('Cache-Control', 'public, max-age=31536000');
+        } else if (filePath.endsWith('.webp')) {
+            res.set('Content-Type', 'image/webp');
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            res.set('Cache-Control', 'public, max-age=31536000');
+        } else if (filePath.endsWith('.gif')) {
+            res.set('Content-Type', 'image/gif');
             res.set('Access-Control-Allow-Origin', '*');
             res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
             res.set('Cache-Control', 'public, max-age=31536000');
