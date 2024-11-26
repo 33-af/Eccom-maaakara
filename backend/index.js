@@ -27,9 +27,11 @@ app.use('*', cors({
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']  // Ensure headers are allowed
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,16 +39,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/static', express.static(path.join(__dirname, 'static'), {
     setHeaders: (res, filePath) => {
         if (filePath.endsWith('.css')) {
+            res.set('Cache-Control', 'public, max-age=3600');  // 1 hour caching
             res.set('Content-Type', 'text/css');
-        } else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
+        }
+
+        // Image files (JPEG, PNG, and others like WebP or GIF if needed)
+        else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
             res.set('Content-Type', 'image/jpeg');
-            res.set('Access-Control-Allow-Origin', '*'); 
+            res.set('Access-Control-Allow-Origin', '*');  // Allow cross-origin requests
+            res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            res.set('Cache-Control', 'public, max-age=31536000');  // 1 year caching for images
         } else if (filePath.endsWith('.png')) {
             res.set('Content-Type', 'image/png');
-            res.set('Access-Control-Allow-Origin', '*'); 
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            res.set('Cache-Control', 'public, max-age=31536000');
         }
     }
 }));
+
 
 app.use(express.static('dist', {
     setHeaders: (res, filePath) => {
