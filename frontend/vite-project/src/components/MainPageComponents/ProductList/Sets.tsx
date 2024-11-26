@@ -12,7 +12,7 @@ const Sets: React.FC = () => {
     
     if (error) return <p>Error loading banners</p>;
     return (
-        <div className={styles.productsWrapper}>
+        <div className={styles.productsWrapper} id='sets'>
             <h2 className={styles.productList__title}>
                 Набори
             </h2>

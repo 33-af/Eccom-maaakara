@@ -6,10 +6,12 @@ import Footer from '../../components/Footer/Footer';
 
 const ContactsPage: React.FC = () => {
     return (
-        <div>
-            <Header/>
-            <Contacts/>
-            <Footer/>
+        <div className="siteWrapper">
+            <Header />
+            <div className="contentWrapper">
+                <Contacts />
+            </div>
+            <Footer />
         </div>
     );
 };

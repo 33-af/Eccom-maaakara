@@ -14,7 +14,7 @@ const Pork: React.FC = () => {
 
 
     return (
-        <div className={styles.productsWrapper}>
+        <div className={styles.productsWrapper} id='pork-jerky'>
             <h2 className={styles.productList__title}>
                 Свинячі джерки
             </h2>

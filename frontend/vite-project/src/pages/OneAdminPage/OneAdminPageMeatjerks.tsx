@@ -14,7 +14,7 @@ import { selectIsAuthenticated } from "../../redux/slices/adminSlice";
 const OneAdminPageMeatjerks: FC = () => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const { data: meatJerk, error, isLoading } = useGetOneMeatJerkQuery(id!); // Добавьте isLoading
+    const { data: meatJerk, error, isLoading } = useGetOneMeatJerkQuery(id!); 
     const [value, setValue] = useState<string>('1');
     const [selectedSize, setSelectedSize] = useState<number | null>(null);
     const [removeMeatJerk] = useRemoveMeatJerkMutation();

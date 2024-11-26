@@ -5,15 +5,14 @@ import Footer from '../../components/Footer/Footer';
 
 function Cart() {
     return (
-        <>
+        <div className="siteWrapper">
             <Header />
-            <div className="container">
+            <div className="container contentWrapper">
                 <CartContent />
             </div>
             <Footer />
-        </>
+        </div>
 
     );
 }
-
 export default Cart;

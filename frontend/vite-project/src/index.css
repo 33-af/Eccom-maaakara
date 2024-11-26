@@ -10,7 +10,19 @@ body, html {
   font-family: "Radio Canada Big", sans-serif;
   background-color: #EBE4D0;
   overflow-x: hidden;
+  overflow-y: auto;
   height: 100%;
+}
+
+.siteWrapper {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  min-height: 200vh;
+}
+
+.contentWrapper {
+  flex: 1 1 auto;
 }
 
 code {
@@ -102,5 +114,3 @@ code {
   cursor: pointer; /* Курсор в виде указателя */
   z-index: 10; /* Обеспечиваем, чтобы кнопка была поверх изображения */
 }
-
-

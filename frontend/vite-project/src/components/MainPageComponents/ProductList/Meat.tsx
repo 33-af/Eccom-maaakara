@@ -16,7 +16,7 @@ const Meat: React.FC = () => {
 
 
     return (
-        <div>
+        <div id='meat-jerky'>
             <h2 className={styles.productList__title}>
                 М'ясні джерки
             </h2>

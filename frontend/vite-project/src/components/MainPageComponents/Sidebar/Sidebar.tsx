@@ -31,16 +31,23 @@ const Sidebar: React.FC = () => {
     const currentBanner = banners?.[currentIndex];
     console.log(currentBanner?.imageUrl);
 
+    const scrollToSection = (id: string) => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
 
     return (
         <div className='container'>
             <div className={styles.sidebar}>
                 <aside className={styles.sidebar__categories}>
-                    <button className={styles.sidebar__category}>Усі</button>
-                    <button className={styles.sidebar__category}>М'ясні джерки</button>
-                    <button className={styles.sidebar__category}>Свинячі джерки</button>
-                    <button className={styles.sidebar__category}>Ковбаски</button>
-                    <button className={styles.sidebar__category}>Набори</button>
+                    {/* <button onClick={() => scrollToSection('all')} className={styles.sidebar__category}>Усі</button> */}
+                    <button onClick={() => scrollToSection('meat-jerky')} className={styles.sidebar__category}>М'ясні джерки</button>
+                    <button onClick={() => scrollToSection('pork-jerky')} className={styles.sidebar__category}>Свинячі джерки</button>
+                    <button onClick={() => scrollToSection('sausages')} className={styles.sidebar__category}>Ковбаски</button>
+                    <button onClick={() => scrollToSection('sets')} className={styles.sidebar__category}>Набори</button>
                 </aside>
 
                 <main className={styles.images}>

@@ -5,13 +5,15 @@ import Footer from '../../components/Footer/Footer';
 
 function PlacingOrder() {
     return (
-        <>
+        <div className="siteWrapper">
             <Header />
-            <div className="container">
-                <Placing />
+            <div className="contentWrapper">
+                <div className="container">
+                    <Placing />
+                </div>
             </div>
-            <Footer/>
-        </>
+            <Footer />
+        </div>
 
     );
 }

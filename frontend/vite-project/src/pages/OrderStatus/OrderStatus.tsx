@@ -5,10 +5,12 @@ import Footer from '../../components/Footer/Footer';
 
 const OrderStatus = () => {
     return (
-        <div>
-            <Header/>
-            <Status/>
-            <Footer/>
+        <div className="siteWrapper">
+            <Header />
+            <div className="contentWrapper">
+                <Status />
+            </div>
+            <Footer />
         </div>
     );
 };

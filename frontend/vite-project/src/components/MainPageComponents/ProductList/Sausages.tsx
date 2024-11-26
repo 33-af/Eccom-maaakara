@@ -12,7 +12,7 @@ const Sausages: React.FC = () => {
     if (error) return <p>Error loading banners</p>;
 
     return (
-        <div className={styles.productsWrapper}>
+        <div className={styles.productsWrapper} id='sausages'>
             <h2 className={styles.productList__title}>
                 Ковбаски
             </h2>

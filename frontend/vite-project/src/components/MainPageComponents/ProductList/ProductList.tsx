@@ -48,6 +48,7 @@ const ProductList: React.FC = () => {
             <section className={styles.productList}>
 
                 <Meat />
+                
                 <Pork />
                 <Sausages />
                 <Sets />
