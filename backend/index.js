@@ -16,11 +16,14 @@ app.use(logger('dev'));
 
 app.use(
     cors({
-        origin: 'https://eccom-maaakara.onrender.com',
+        origin: [
+            'https://eccom-maaakara.onrender.com',
+            'http://localhost:5173',
+        ], // Add allowed origins
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        credentials: true,
-        allowedHeaders: ['Content-Type', 'Authorization'],
-        exposedHeaders: ['Content-Length', 'X-Content-Type-Options'],
+        credentials: true, // Ensure cookies and credentials are sent
+        allowedHeaders: ['Content-Type', 'Authorization'], // Ensure required headers are allowed
+        exposedHeaders: ['Content-Length', 'X-Content-Type-Options'], // Optionally expose headers
     })
 );
 
@@ -63,14 +66,14 @@ app.use('/static', express.static(path.join(__dirname, 'static'), {
 
 app.use('/static', express.static(path.join(__dirname, 'static'), {
     setHeaders: (res, filePath) => {
-        const ext = path.extname(filePath).toLowerCase();
-        if (ext === '.css') res.set('Content-Type', 'text/css');
-        if (ext === '.js') res.set('Content-Type', 'application/javascript');
-        if (ext === '.jpg' || ext === '.jpeg') res.set('Content-Type', 'image/jpeg');
-        res.set('Access-Control-Allow-Origin', '*'); // Allow cross-origin access
+      const ext = path.extname(filePath).toLowerCase();
+      if (ext === '.css') res.set('Content-Type', 'text/css');
+      if (ext === '.js') res.set('Content-Type', 'application/javascript');
+      if (ext === '.jpg' || ext === '.jpeg') res.set('Content-Type', 'image/jpeg');
+      res.set('Access-Control-Allow-Origin', '*'); // Allow cross-origin access
     },
-}));
-
+  }));
+  
 
 console.log(path.join(__dirname, 'static'));
 
