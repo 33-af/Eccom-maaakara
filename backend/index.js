@@ -14,24 +14,15 @@ const app = express();
 
 app.use(logger('dev'));
 
-app.use('*', cors({
-    origin: (origin, callback) => {
-        const allowedOrigins = [
-            'https://eccom-maaakara.onrender.com',
-            'http://localhost:5173'
-        ];
-
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']  // Ensure headers are allowed
-}));
-
+app.use(
+    cors({
+        origin: 'https://eccom-maaakara.onrender.com',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        credentials: true,
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        exposedHeaders: ['Content-Length', 'X-Content-Type-Options'],
+    })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -70,18 +61,16 @@ app.use('/static', express.static(path.join(__dirname, 'static'), {
     }
 }));
 
-
-app.use(express.static('dist', {
+app.use('/static', express.static(path.join(__dirname, 'static'), {
     setHeaders: (res, filePath) => {
-        if (filePath.endsWith('.css')) {
-            res.set('Content-Type', 'text/css');
-        } else if (filePath.endsWith('.js')) {
-            res.set('Content-Type', 'application/javascript');
-        } else if (filePath.endsWith('.html')) {
-            res.set('Content-Type', 'text/html');
-        }
-    }
+        const ext = path.extname(filePath).toLowerCase();
+        if (ext === '.css') res.set('Content-Type', 'text/css');
+        if (ext === '.js') res.set('Content-Type', 'application/javascript');
+        if (ext === '.jpg' || ext === '.jpeg') res.set('Content-Type', 'image/jpeg');
+        res.set('Access-Control-Allow-Origin', '*'); // Allow cross-origin access
+    },
 }));
+
 
 console.log(path.join(__dirname, 'static'));
 
