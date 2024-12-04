@@ -9,7 +9,7 @@ import styles from './style.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Path } from '../../../Path';
 import { logout } from '../../../redux/slices/adminSlice';
-import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery, useGetBannersQuery } from '../../../services/products';
+import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery, useGetBannersQuery, useGetChickensQuery } from '../../../services/products';
 import { loader } from '../../../utils/images';
 
 type ButtonType = 'dashboard' | 'allProducts';
@@ -25,6 +25,7 @@ function AdminPanel() {
     const { data: Packing } = useGetAllPackingQuery();
     const { data: Pigjerks } = useGetAllPigJerksQuery();
     const { data: Sausages } = useGetAllSausagesQuery();
+    const { data: Chickens } = useGetChickensQuery()
 
     if (isLoading) {
         return (
@@ -133,6 +134,11 @@ function AdminPanel() {
                             </div>
 
                             <div className={styles.meatCategory}>
+                                Курячі джерки
+                                <div className={styles.quantity}>0</div>
+                            </div>
+
+                            <div className={styles.meatCategory}>
                                 Ковбаски
                                 <div className={styles.quantity}>0</div>
                             </div>
@@ -196,6 +202,7 @@ function AdminPanel() {
                             <option value={Path.adminPanelAddBanner} className={`${styles.newProduct}`}>Banner</option>
                             <option value={Path.adminPanelAddMeatJerks} className={`${styles.newProduct}`}>MeaJerks</option>
                             <option value={Path.adminPanelAddPigJerks} className={`${styles.newProduct}`}>PigJerks</option>
+                            <option value={Path.adminPanelAddChicken} className={`${styles.newProduct}`}>Chickens</option>
                             <option value={Path.adminPanelAddSausage} className={`${styles.newProduct}`}>Sausage</option>
                             <option value={Path.adminPanelPackage} className={`${styles.newProduct}`}>Package</option>
                         </select>
@@ -227,6 +234,26 @@ function AdminPanel() {
                                             <div className={styles.meatJerkTitle}>{meatJerk.title}</div>
                                             <div className={styles.product}>{meatJerk.quantity} Gram</div>
                                             <div className={styles.price}>₹{meatJerk.price}</div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+                        ))}
+
+
+                        {Chickens?.map((chicken) => (
+                            <div key={chicken.id} className={styles.card}>
+                                <div className={styles.flex}>
+                                    <Link
+                                        to={`${Path.adminPanelOneChicken}/${chicken.id}`}
+                                        key={chicken.id}
+                                        className={styles.meatJerkLink}
+                                    >
+                                        <img src={`https://eccom-maaakara-backend.onrender.com/${chicken.image}`} alt={chicken.title} className={styles.meatJerk} />
+                                        <div className={styles.cardInfo}>
+                                            <div className={styles.meatJerkTitle}>{chicken.title}</div>
+                                            <div className={styles.product}>{chicken.quantity} Gram</div>
+                                            <div className={styles.price}>₹{chicken.price}</div>
                                         </div>
                                     </Link>
                                 </div>
