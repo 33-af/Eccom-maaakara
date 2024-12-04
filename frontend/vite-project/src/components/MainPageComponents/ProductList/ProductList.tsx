@@ -4,7 +4,7 @@ import Meat from "./Meat";
 import Pork from "./Pork";
 import Sausages from "./Sausages";
 import Sets from "./Sets";
-import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery } from '../../../services/products';
+import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery, useGetChickensQuery } from '../../../services/products';
 import { loader } from '../../../utils/images';
 import Chicken from './Chicken';
 
@@ -15,8 +15,9 @@ const ProductList: React.FC = () => {
     const { isLoading: isLoadingPork } = useGetAllPigJerksQuery();
     const { isLoading: isLoadingSausages } = useGetAllSausagesQuery();
     const { isLoading: isLoadingPacking } = useGetAllPackingQuery();
+    const { isLoading: isLoadingChickens } = useGetChickensQuery();
 
-    const isLoading = isLoadingMeat || isLoadingPork || isLoadingSausages || isLoadingPacking;
+    const isLoading = isLoadingMeat || isLoadingPork || isLoadingSausages || isLoadingPacking || isLoadingChickens;
 
     if (isLoading) {
         return <div

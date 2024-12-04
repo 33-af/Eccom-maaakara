@@ -12,7 +12,7 @@ import { useAddChickenMutation } from '../../services/products';
 
 type ButtonType = 'dashboard' | 'allProducts';
 
-const AdminCreateMeatJerks = () => {
+const AdminCreateChicken = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const { searchTerm, handleSearchChange, handleSearchSubmit } = useSearch((term) => {
@@ -306,4 +306,4 @@ const AdminCreateMeatJerks = () => {
   );
 }
 
-export default AdminCreateMeatJerks
+export default AdminCreateChicken

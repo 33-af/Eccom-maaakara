@@ -17,6 +17,7 @@ import OneAdminPagePigJerks from "../pages/OneAdminPage/OneAdminPagePigJerks";
 import OneAdminSausage from "../pages/OneAdminPage/OneAdminSausage";
 import { lazy } from "react";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import AdminCreateChicken from "../pages/Admin/AdminCreateChicken";
 
 // const LazyAdmin  = lazy(()=> import('../pages/Admin/Admin')) 
 const LazyMain = lazy(() => import('../pages/Main/Main'))
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
         element: <OneAdminPagePigJerks />,
     },
     {
+        path: `${Path.adminPanelOneChicken}/:id`, // Добавляем параметр id
+        element: <OneAdminPagePigJerks />,
+    },
+    {
         path: Path.adminPanelAddMeatJerks,
         element: (
             <ProtectedRoute>
@@ -98,6 +103,15 @@ const router = createBrowserRouter([
             </ProtectedRoute>
         ),
     },
+    {
+        path: Path.adminPanelAddChicken,
+        element: (
+            <ProtectedRoute>
+                <AdminCreateChicken />
+            </ProtectedRoute>
+        ),
+    },
+    
     {
         path: Path.adminPanelAddPigJerks,
         element: (
