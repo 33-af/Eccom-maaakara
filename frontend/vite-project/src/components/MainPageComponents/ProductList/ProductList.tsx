@@ -6,6 +6,7 @@ import Sausages from "./Sausages";
 import Sets from "./Sets";
 import { useGetAllMeatJerkQuery, useGetAllPackingQuery, useGetAllPigJerksQuery, useGetAllSausagesQuery } from '../../../services/products';
 import { loader } from '../../../utils/images';
+import Chicken from './Chicken';
 
 
 
@@ -48,8 +49,8 @@ const ProductList: React.FC = () => {
             <section className={styles.productList}>
 
                 <Meat />
-                
                 <Pork />
+                <Chicken />
                 <Sausages />
                 <Sets />
             </section>

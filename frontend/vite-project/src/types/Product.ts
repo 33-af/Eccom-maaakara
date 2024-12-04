@@ -39,6 +39,17 @@ export interface Sausage {
     userId: string;
 }
 
+export interface Chickens {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+    quantity: number;
+    price: number;
+    image: string;
+    userId: string;
+}
+
 export interface Packing {
     id: string;
     title: string;

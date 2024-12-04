@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store/store";
 import { ProductsApi } from "../../services/products";
-import { Banner, MeatJerk, Packing, PigJerk, Sausage } from '../../types/Product';
+import { Banner, MeatJerk, Packing, PigJerk, Sausage, Chickens } from '../../types/Product';
 
 
 interface IInitialState {
@@ -11,6 +11,7 @@ interface IInitialState {
     packings: Packing[] | null;
     pigJerks: PigJerk[] | null;
     sausages: Sausage[] | null;
+    chicken: Chickens[] | null;
 }
 
 const initialState: IInitialState = {
@@ -19,6 +20,7 @@ const initialState: IInitialState = {
     packings: null,
     pigJerks: null,
     sausages: null,
+    chicken: null,
 };
 
 const slice = createSlice({
@@ -43,6 +45,9 @@ const slice = createSlice({
             })
             .addMatcher(ProductsApi.endpoints.getAllSausages.matchFulfilled, (state, action) => {
                 state.sausages = action.payload;
+            })
+            .addMatcher(ProductsApi.endpoints.getChickens.matchFulfilled, (state, action) => {
+                state.chicken = action.payload;
             });
     }
 });

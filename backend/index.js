@@ -90,6 +90,7 @@ app.use('/api/meatJerk', require('./routes/meatJerks'))
 app.use('/api/packing', require('./routes/packings'))
 app.use('/api/pigJerk', require('./routes/pigJerk'))
 app.use('/api/sausage', require('./routes/sausage'))
+app.use('/api/chicken', require('./routes/chicken'))
 
 app.get('/', (req, res) => {
     res.send("Welcome to the API!");

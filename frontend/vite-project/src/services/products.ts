@@ -1,4 +1,4 @@
-import { Banner,  MeatJerk, Packing, PigJerk, Sausage } from '../types/Product'
+import { Banner,  Chickens,  MeatJerk, Packing, PigJerk, Sausage } from '../types/Product'
 
 import { api } from './api';
 
@@ -33,6 +33,41 @@ export const ProductsApi = api.injectEndpoints({
         removeBanner: builder.mutation<string, string>({
             query: (id) => ({
                 url: `/banner/removeBanner/${id}`,
+                method: "DELETE",
+            })
+        }),
+
+
+
+        getChickens: builder.query<Chickens[], void>({
+            query: () => ({
+                url: '/chicken/',
+                method: "GET"
+            })
+        }),
+        getOneChicken: builder.query<Chickens, string>({
+            query: (id) => ({
+                url: `/chicken/getOneChicken/${id}`, 
+                method: "GET"
+            })
+        }),
+        addChicken: builder.mutation<Chickens, FormData>({
+            query: (formData) => ({
+                url: '/chicken/addChicken',
+                method: 'POST',
+                body: formData,
+            })
+        }),
+        updateChicken: builder.mutation<string, Chickens>({
+            query: (updatedBanner) => ({
+                url: `/chicken/updateChicken/${updatedBanner.id}`,
+                method: "PUT",
+                body: updatedBanner
+            })
+        }),
+        removeChicken: builder.mutation<string, string>({
+            query: (id) => ({
+                url: `/chicken/removeChicken/${id}`,
                 method: "DELETE",
             })
         }),
@@ -173,7 +208,7 @@ export const ProductsApi = api.injectEndpoints({
 })
 
 export const { useAddBannerMutation, useGetBannersQuery, useGetOneBannerQuery,
-
+    useGetChickensQuery, useAddChickenMutation, useGetOneChickenQuery, useRemoveChickenMutation, useUpdateChickenMutation,
     useGetOneMeatJerkQuery, useGetOnePackQuery, 
     useGetOneSausageQuery, useGetOnePigJerkQuery,
     useRemoveBannerMutation, useUpdateBannerMutation,
@@ -186,6 +221,11 @@ export const { useAddBannerMutation, useGetBannersQuery, useGetOneBannerQuery,
 
 export const {
     endpoints:{
+        getChickens,
+        getOneChicken,
+        addChicken,
+        removeChicken,
+        updateChicken,
         getOneBanner,
         getBanners,
         addBanner,

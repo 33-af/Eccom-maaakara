@@ -1,7 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Path } from "../Path";
-// import Main from "../pages/Main/Main";
-// import Cart from "../pages/Cart/Cart";
 import ContactsPage from "../pages/Contacts/ContactsPage";
 import OrderStatus from "../pages/OrderStatus/OrderStatus";
 import PlacingOrder from "../pages/PlacingOrder/PlacingOrder";
